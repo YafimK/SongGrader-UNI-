@@ -1,0 +1,26 @@
+The design:
+we have a song class which represents a regular song, which has two children 0 vocal song and 
+instrumental song. than we get the song to inherit from the class Gradable which enables the 
+song class and it's children to be graded / ranked using the inherited method which Song and 
+it's children override. So we get more polymorphic structure.
+Each grading method recives two param' - the first is a data structure containg pairs of pointer
+to a grader and the grader type and the second is the query word to be ranked accordingly.
+
+GRADERS - is the second type objects we have which are the test class. each class holds the
+weight of it's match weight from the parameters file(given by the user) and the mathametical
+method which calculates the grade accoridngly (actually tha match test).
+
+so each grading method in Song, knows which testing methods she needs (by the program instructions)
+and runs them.
+
+this structure allows future additions - songs and graders by simply creating new inherted objects,
+and tests and the songs can call any tests they need without the need to replicate code.
+
+now, we have three singelton pattern class which are the parsers for each file - since each file
+needs diffrent methosm i decided to make them in diffrent files. each parser returnes the data
+structure hoding the apporiate object (Song, Grader).
+
+Latest parser also runs the grading process - reads the querywords, and then starts grading the songs
+and printing the results.
+
+offcourse the MIR is the simple driver which knows all the right methods and structure.
